@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User ka model (table)
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+ model Donation {
+   id            Int      @id @default(autoincrement())
+   donorName     String   @map("donor_name")
+   contactNumber String   @map("contact_number")
+   city          String
+   bloodGroup    String   @map("blood_group")
+   hospital      String
+   cost          String   // "Free" ya "Paid"
+   quantity      Int
+   createdAt     DateTime @default(now()) @map("created_at")
+
+   @@map("donations") 
+ }
+
+  model Request {
+   id            Int      @id @default(autoincrement())
+   patientName   String   @map("patient_name")
+   contactNumber String   @map("contact_number")
+   city          String
+   hospital      String
+   bloodGroup    String   @map("blood_group")
+   quantity      Int      // Quantity in units
+   createdAt     DateTime @default(now()) @map("created_at")
+
+   @@map("requests") 
+ }
