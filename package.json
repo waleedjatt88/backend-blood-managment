@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "dist/app.js",
   "scripts": {
-    "dev": "node api.js && ts-node-dev --respawn --transpile-only src/app.ts",
-    "build": "node api.js && tsc",
-    "start": "node api.js && node dist/app.js"
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js"
   },
   "keywords": [],
   "author": "",
